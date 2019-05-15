@@ -8,10 +8,14 @@ for (var i = 0; i < elements.length; i++) {
 
         if (node.nodeType === 3) {
             var text = node.nodeValue;
+            var replacedA = text.replace(/\sb/g," " +  String.fromCodePoint(0x1F170)).replace(/A/g, String.fromCodePoint(0x1F170));
             var replacedB = text.replace(/\sb/g," " +  String.fromCodePoint(0x1F171)).replace(/B/g, String.fromCodePoint(0x1F171));
 
             if (replacedB !== text) {
                 element.replaceChild(document.createTextNode(replacedB), node);
+            }
+            if(replacedA !== text) {
+                element.replaceChild(document.createTextNode(replacedA), node);   
             }
         }
     }
